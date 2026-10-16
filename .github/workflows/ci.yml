@@ -1,0 +1,21 @@
+name: CI - Validar aplicacion
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+      - name: Verificar archivos
+        run: |
+          test -f src/index.html || { echo "El archivo index no existe."; exit 1; }
+          test -f src/style.css || { echo "El archivo style no existe."; exit 1; }
+      - name: Verificar HTML
+        run: |
+          grep -q "<title>" src/index.html || echo "El archivo no contiene un titulo."
