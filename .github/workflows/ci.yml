@@ -23,3 +23,6 @@ jobs:
         run: |
           grep -q "<html" src/index.html
           grep -q "</html>" src/index.html
+      - name: Verificar DOCTYPE
+        run: |
+          grep -qi "<!DOCTYPE html>" src/index.html
