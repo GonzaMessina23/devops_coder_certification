@@ -19,3 +19,7 @@ jobs:
       - name: Verificar HTML
         run: |
           grep -q "<title>" src/index.html || echo "El archivo no contiene un titulo."
+      - name: Verificar Estructura HTML
+        run: |
+          grep -q "<html" src/index.html
+          grep -q "</html>" src/index.html
